@@ -1,31 +1,42 @@
 let studentslist = new Set();
 let studentData = new Map();
 let meet_duration = 0;
+let participants_button;
 let StartTime = new Date().toLocaleTimeString();
+let participants_btn_click = 1;
 
 function track_attendance() {
     let currently_present_students = document.getElementsByClassName("ZjFb7c");
-    studentslist.clear();
-    for (i = 0; i < currently_present_students.length; i++) {
-        studentslist.add(currently_present_students[i].innerHTML.toUpperCase());
-    }
 
-    for (student of studentslist) {
-        if (studentData.has(student)) {
-            let data = studentData.get(student);
-            data[0] += 1;
-            studentData.set(student, data);
-        } else {
-            let join_time = new Date().toLocaleTimeString();
-            let curr_status = 1;
-            let data = [];
-            data.push(curr_status);
-            data.push(join_time);
-            studentData.set(student, data);
+    if (currently_present_students.length > 0) {
+        studentslist.clear();
+        for (i = 0; i < currently_present_students.length; i++) {
+            studentslist.add(currently_present_students[i].innerHTML.toUpperCase());
+        }
+
+        for (student of studentslist) {
+            if (studentData.has(student)) {
+                let data = studentData.get(student);
+                data[0] += 1;
+                studentData.set(student, data);
+            } else {
+                let join_time = new Date().toLocaleTimeString();
+                let curr_status = 1;
+                let data = [];
+                data.push(curr_status);
+                data.push(join_time);
+                studentData.set(student, data);
+            }
+        }
+
+        meet_duration += 1;
+    } else {
+        try {
+            participants_button[participants_btn_click % participants_button.length].click();
+        } catch (error) {
+            stop();
         }
     }
-
-    meet_duration += 1;
 }
 
 function start() {
@@ -34,7 +45,7 @@ function start() {
 
 let stop = STOP = function() {
     clearInterval(tracking);
-    let mac_window = window.open('http://meetattendance.herokuapp.com/mac/save.html');
+    let mac_window = window.open('https://meetattendance.herokuapp.com/mac//save/');
     let meet_code = window.location.pathname.substring(1);
     let date = new Date();
     let dd = date.getDate();
@@ -72,7 +83,7 @@ let stop = STOP = function() {
     }
 
     setTimeout(function() {
-        mac_window.postMessage(JSON.stringify(attendance_details), 'http://meetattendance.herokuapp.com/mac/save.html')
+        mac_window.postMessage(JSON.stringify(attendance_details), 'https://meetattendance.herokuapp.com/mac/save/')
     }, 5000);
 }
 
@@ -98,6 +109,7 @@ setInterval(function() {
 
 function add_status() {
     try {
+        participants_button = document.getElementsByClassName("VfPpkd-kBDsod NtU4hc");
         document.getElementsByClassName("SQHmX")[0].appendChild(macstatus);
         start();
         clearInterval(status_text);
