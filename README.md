@@ -1,1 +1,2 @@
-# chrome_extension
+# Meet Attendance Collector
+###### chrome extension
