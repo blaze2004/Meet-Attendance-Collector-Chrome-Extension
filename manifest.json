@@ -21,7 +21,7 @@
         "run_at": "document_idle"
     }, {
         "matches": [
-            "http://127.0.0.1:8000/mac/save/*"
+            "https://meetattendance.herokuapp.com/mac/save/*"
         ],
         "js": [
             "save.js"

@@ -85,7 +85,7 @@ let stop = STOP = function() {
         console.log('Attendance saved for ' + meet_code);
     })
 
-    window.open('http://127.0.0.1:8000/mac/save/');
+    window.open('https://meetattendance.herokuapp.com/mac/save/');
 }
 
 // Adding attendance status to meet ui 
