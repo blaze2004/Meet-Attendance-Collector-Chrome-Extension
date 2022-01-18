@@ -10,14 +10,23 @@
         "48": "icons/mac-logo-48.png",
         "128": "icons/mac-logo-128.png"
     },
-    "permissions": ["tabs"],
+    "permissions": ["tabs", "storage"],
     "content_scripts": [{
         "matches": [
             "https://meet.google.com/*"
         ],
         "js": [
             "attendance.js"
-        ]
+        ],
+        "run_at": "document_idle"
+    }, {
+        "matches": [
+            "http://127.0.0.1:8000/mac/save/*"
+        ],
+        "js": [
+            "save.js"
+        ],
+        "run_at": "document_idle"
     }],
     "action": {
         "default_icon": {

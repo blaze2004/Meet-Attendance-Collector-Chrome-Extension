@@ -44,7 +44,6 @@ function start() {
 }
 
 let stop = STOP = function() {
-    window.open('https://meetattendance.herokuapp.com');
     clearInterval(tracking);
     let meet_code = window.location.pathname.substring(1);
     let date = new Date();
@@ -82,18 +81,11 @@ let stop = STOP = function() {
         meet_duration: meet_duration
     }
 
-    var data_to_send = "";
-    for (const [key, value] of Object.entries(attendance_details)) {
-        data_to_send += "&" + key + "=" + value;
-    }
+    chrome.storage.sync.set({ 'latest_meet_attendance': attendance_details }, function() {
+        console.log('Attendance saved for ' + meet_code);
+    })
 
-    data_to_send = data_to_send.slice(1);
-    setTimeout(function() {
-        var newxmlhttp = new XMLHttpRequest();
-        newxmlhttp.open('POST', 'https://meetattendance.herokuapp.com/mac/save/', true);
-        newxmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-        newxmlhttp.send(data_to_send);
-    }, 2000);
+    window.open('http://127.0.0.1:8000/mac/save/');
 }
 
 // Adding attendance status to meet ui 
