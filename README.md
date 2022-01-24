@@ -1,4 +1,4 @@
-# Meet Attendance Collector
+# Trackit
 
 ###### Chrome Extension
 

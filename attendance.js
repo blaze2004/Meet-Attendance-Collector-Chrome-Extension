@@ -92,7 +92,7 @@ let stop = STOP = function() {
 let macstatus = document.createElement("button");
 macstatus.id = "macstatus";
 macstatus.className = "Jyj1Td CkXZgc";
-macstatus.innerHTML = "&nbsp;🔴 Running Meet Attendance";
+macstatus.innerHTML = "&nbsp;🔴 Running Trackit";
 macstatus.type = "button";
 macstatus.style.color = "red";
 macstatus.style.fontWeight = "bold";
