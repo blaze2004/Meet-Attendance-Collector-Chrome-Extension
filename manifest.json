@@ -21,7 +21,7 @@
         "run_at": "document_idle"
     }, {
         "matches": [
-            "https://meetattendance.herokuapp.com/mac/save/*"
+            "https://trackitnow.pythonanywhere.com/*"
         ],
         "js": [
             "save.js"

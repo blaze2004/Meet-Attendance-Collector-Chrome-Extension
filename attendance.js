@@ -6,7 +6,7 @@ let StartTime = new Date().toLocaleTimeString();
 let participants_btn_click = 1;
 
 function track_attendance() {
-    let currently_present_students = document.getElementsByClassName("ZjFb7c");
+    let currently_present_students = document.getElementsByClassName("zWGUib");
 
     if (currently_present_students.length > 0) {
         studentslist.clear();
@@ -85,7 +85,7 @@ let stop = STOP = function() {
         console.log('Attendance saved for ' + meet_code);
     })
 
-    window.open('https://meetattendance.herokuapp.com/mac/save/');
+    window.open('https://trackitnow.pythonanywhere.com/mac/save/');
 }
 
 // Adding attendance status to meet ui 
