@@ -17,3 +17,4 @@ The extension records attendance automatically when you are in a meet and saves 
 no manual work required ! it's fully automatic.
 
 ![](./icons/chrome_ext.png)
+![](./icons/att_report.png)
