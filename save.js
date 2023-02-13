@@ -1,6 +1,13 @@
-chrome.storage.sync.get(['latest_meet_attendance'], function(item) {
-    if (item.latest_meet_attendance != null && item.latest_meet_attendance != undefined && item.latest_meet_attendance != 'undefined ') {
-        localStorage.setItem('latest_meet_attendance', JSON.stringify(item.latest_meet_attendance));
-        chrome.storage.sync.clear();
+chrome.storage.sync.get(null, function(item) {
+
+    let attendanceData = new Array();
+
+    for (let key in item) {
+        if (item[key] != null && item[key] != undefined && item[key] != 'undefined ') {
+            attendanceData.push(item[key]);
+        }
     }
+
+    localStorage.setItem("meet_attendance_data", JSON.stringify(attendanceData));
+    chrome.storage.sync.clear();
 });
